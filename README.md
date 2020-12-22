@@ -18,4 +18,4 @@ This web application lets its users view, edit, and/or delete their cases and in
 Pull requests and bug fixes welcome.
 
 ## License
-[MIT]
+[MIT](https://choosealicense.com/licenses/mit/)
