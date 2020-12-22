@@ -1,0 +1,8 @@
+<body>
+    <h2>Case Files</h2>
+    <p>Please select a case to view more information regarding that specific case.</p>
+    <ul><% Case.all.each do |case_file| %>
+        <li><%= case_file.location %> - <% binding.pry %></li>
+        <br>
+    <% end %></ul>
+</body>

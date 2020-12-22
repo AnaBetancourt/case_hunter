@@ -1,7 +1,7 @@
 class CaseController < ApplicationController
 
     get '/cases' do
-       erb :"/cases/index" 
+       erb :'/case/index'
     end
 
     get '/cases/new' do
