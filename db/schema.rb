@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 20201222022301) do
   create_table "cases", force: :cascade do |t|
     t.string  "location"
     t.string  "description"
-    t.integer "hunter1_id"
-    t.integer "hunter2_id"
+    t.integer "hunter_id"
     t.integer "monster_id"
   end
 
