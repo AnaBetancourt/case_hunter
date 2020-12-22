@@ -5,7 +5,7 @@ class CaseController < ApplicationController
     end
 
     get '/cases/new' do
-        erb :"/cases/new"
+        erb :"/case/new"
     end
 
     post '/cases' do
@@ -13,11 +13,11 @@ class CaseController < ApplicationController
     end
 
     get '/cases/:id' do
-        erb :"/cases/show"
+        erb :"/case/show"
     end
 
     get '/cases/:id/edit' do
-        erb :"/cases/edit"
+        erb :"/case/edit"
     end
 
     patch '/cases/:id' do

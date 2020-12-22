@@ -1,0 +1,26 @@
+<body>
+    <h2>Have a new Case?</h2>
+    <p>Fill out the form below to submit a new case to the site.</p>
+    <form method="POST" action="/cases">
+        <label for="location">Case Location:</label>
+        <input type="text" name="location">
+        <br>
+        <label for="description">Case Description:</label>
+        <textarea name="description"></textarea>
+        <br>
+        <br>
+        <p>Assign a hunter to this case:</p>
+        <% Hunter.all.each do |user| %>
+            <input type="radio" name="hunter_name"> <%= user.name %></input>
+            <br>
+        <% end %>
+        <br>
+        <p>Assign a monster to this case:</p>
+        <% Monster.all.each do |monster| %>
+            <input type="radio" name="hunter_name"> <%= monster.species.capitalize %></input>
+            <br>
+        <% end %>
+        <br>
+        <input type="submit" value="Submit Case">
+    </form>
+</body>
