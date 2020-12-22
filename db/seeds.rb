@@ -18,3 +18,8 @@ Case.create(location: "Minesota", description: "A priest with connections to a h
 Case.create(location: "Ohio", description: "A man is found dead in a pool of blood in his home. His daughter who found him claims she invoked a ghost named 'Bloody Mary' and caused his death.", hunter_id: 5, monster_id: 3)
 Case.create(location: "California", description: "Dean recieves a call from an old friend who is being charged for a murder he swears he did not commit. Footage shows the man at a bar like he says he was but also the scene of the crime with reflective eyes.", hunter_id: 1, monster_id: 4)
 Case.create(location: "Virginia", description: "A lawyer is found dead with his heart ripped out. Upon further investigation it is found that once a month 2-3 people are found dead with missing hearts.", hunter_id: 4, monster_id: 5)
+Case.create(location: "Maryland", description: "4 girls have gone missing in a town in Maryland from a twilight themed club.", hunter_id: 1, monster_id: 1)
+Case.create(location: "Oklahoma", description: "More storm activity than normal is documented in Oklahoma, especially in a town where all the citizens have blocked off their town.", hunter_id: 5, monster_id: 2)
+Case.create(location: "New York", description: "A local family reports being terrorized in the night by an invisible force.", hunter_id: 2, monster_id: 3)
+Case.create(location: "Florida", description: "Man who was pronouced dead a year ago is the lead suspect in a murder case that has local cops baffled.", hunter_id: 4, monster_id: 4)
+Case.create(location: "Kansas", description: "5 men who went camping were found at their campsite dead. They appear to have been mauled by a bear and are all missing their hearts", hunter_id: 3, monster_id: 5)
