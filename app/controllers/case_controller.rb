@@ -39,11 +39,21 @@ class CaseController < ApplicationController
     end
 
     patch '/cases/:id' do
+        @case = Case.find_by(id: params[:id])
+
+        if params[:monster][:species] != ""
+            @monster = Monster.create(params[:monster])
+            @monster.hunters << Hunter.find_by(id: @case.hunter_id)
+            @case.update(monster_id: @monster.id)
+        else
+            @case.update(params[:case])
+        end
         
+        redirect "/cases/#{@case.id}"
     end
 
     delete '/cases/:id' do
-        
+        binding.pry
     end
 
 
