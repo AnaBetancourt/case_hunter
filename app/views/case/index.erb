@@ -2,7 +2,7 @@
     <h2>Case Files</h2>
     <p>Please select a case to view more information regarding that specific case.</p>
     <ul><% Case.all.each do |case_file| %>
-        <li><h4><%= case_file.location %></h4>☠ <% monster = Monster.find_by(id: case_file.monster_id) %><%= monster.species %></li>
+        <li>☠<%= case_file.name %></li>
         <br>
     <% end %></ul>
 </body>
