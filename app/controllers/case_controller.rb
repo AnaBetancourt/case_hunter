@@ -18,11 +18,14 @@ class CaseController < ApplicationController
 
     get '/cases/:id/edit' do
         @case = Case.find_by(id: params[:id])
+        @hunters = Hunter.all 
+        @monsters = Monster.all
+        
         erb :"/case/edit"
     end
 
     patch '/cases/:id' do
-        
+        binding.pry
     end
 
     delete '/cases/:id' do
