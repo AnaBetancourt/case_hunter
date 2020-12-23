@@ -16,6 +16,7 @@ class CaseController < ApplicationController
 
         if !@case.monster_id 
             @monster = Monster.create(params[:monster])
+            @monster.hunters << Hunter.find_by(id: @case.hunter_id)
             @case.monster_id = @monster.id
         end
 
