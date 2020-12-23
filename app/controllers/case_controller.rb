@@ -17,7 +17,6 @@ class CaseController < ApplicationController
         if !@case.monster_id 
             @monster = Monster.create(params[:monster])
             @case.monster_id = @monster.id
-            binding.pry
         end
 
         redirect "/cases/#{@case.id}"
