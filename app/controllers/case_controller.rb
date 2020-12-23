@@ -17,6 +17,7 @@ class CaseController < ApplicationController
     end
 
     get '/cases/:id/edit' do
+        @case = Case.find_by(id: params[:id])
         erb :"/case/edit"
     end
 
