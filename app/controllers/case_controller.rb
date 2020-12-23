@@ -44,7 +44,8 @@ class CaseController < ApplicationController
         if params[:monster][:species] != ""
             @monster = Monster.create(params[:monster])
             @monster.hunters << Hunter.find_by(id: @case.hunter_id)
-            @case.update(monster_id: @monster.id)
+            @monster.cases << @case
+            #why is this section saving the current case as well as creating a new one only with the monster and hunter ids?
         else
             @case.update(params[:case])
         end
