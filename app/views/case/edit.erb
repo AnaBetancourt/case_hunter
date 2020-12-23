@@ -11,23 +11,28 @@
         <textarea name="case[description]"><%= @case.description %></textarea>
         <br>
         <br>
-        <h3>Select a hunter and/or monster to assign to this case or create a new one below.</h3>
-        <br>
-        <p>Existing Hunters:</p>
+        <p>Assign a Hunter to this case:</p>
         <% @hunters.each do |hunter| %>
             <input type="radio" name="case[hunter_id]" value="<%= hunter.id %>"<%= 'checked' if @case.hunter_id == hunter.id %>> <%= hunter.name %></input>
             <br>
         <% end %>
         <br>
-        <br>
-        <p>Create a new Hunter</p>
-            
-        <br>
-        <p>Monster assigned to this case:</p>
+        <p>Please select the monster involved in this case or create a new one below.</p>
+        <p>Existing Monsters:</p>
         <% @monsters.each do |monster| %>
             <input type="radio" name="case[monster_id]" value="<%= monster.id %>"<%= 'checked' if @case.monster_id == monster.id %>> <%= monster.species.capitalize %></input>
             <br>
         <% end %>
+        <br>
+        <p>Create a New Monster:</p>
+        <label for="monster[species]">Species:</label>
+        <input type="text" name="monster[species]">
+        <br>
+        <label for="monster[lore]">Lore:</label>
+        <textarea name="monster[lore]"></textarea>
+        <br>
+        <label for="monster[how_to_kill]">How to Kill:</label>
+        <input type="text" name="monster[how_to_kill]">
         <br>
         <input type="submit" value="Edit Case">
     </form>
