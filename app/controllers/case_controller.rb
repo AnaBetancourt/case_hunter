@@ -51,7 +51,10 @@ class CaseController < ApplicationController
     end
 
     delete '/cases/:id' do
-        binding.pry
+        @case = Case.find_by(id: params[:id])
+        @case.delete
+
+        redirect "/cases"
     end
 
 
