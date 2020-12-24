@@ -1,14 +1,14 @@
 class CaseController < ApplicationController
 
     get '/cases' do
-       erb :'/case/index'
+       erb :'/cases/index'
     end
 
     get '/cases/new' do
         @hunters = Hunter.all
         @monsters = Monster.all
 
-        erb :"/case/new"
+        erb :"/cases/new"
     end
 
     post '/cases' do
@@ -16,8 +16,7 @@ class CaseController < ApplicationController
 
         if !@case.monster_id 
             @monster = Monster.create(params[:monster])
-            @monster.hunters << Hunter.find_by(id: @case.hunter_id)
-            @case.monster_id = @monster.id
+            @monster.cases << @case
         end
 
         redirect "/cases/#{@case.id}"
@@ -27,7 +26,7 @@ class CaseController < ApplicationController
         @case = Case.find_by(id: params[:id])
         @monster = Monster.find_by(id: @case.monster_id)
         @hunter = Hunter.find_by(id: @case.hunter_id)
-        erb :"/case/show"
+        erb :"/cases/show"
     end
 
     get '/cases/:id/edit' do
@@ -35,7 +34,7 @@ class CaseController < ApplicationController
         @hunters = Hunter.all 
         @monsters = Monster.all
     
-        erb :"/case/edit"
+        erb :"/cases/edit"
     end
 
     patch '/cases/:id' do
@@ -43,9 +42,7 @@ class CaseController < ApplicationController
 
         if params[:monster][:species] != ""
             @monster = Monster.create(params[:monster])
-            @monster.hunters << Hunter.find_by(id: @case.hunter_id)
             @monster.cases << @case
-            #why is this section saving the current case as well as creating a new one only with the monster and hunter ids?
         else
             @case.update(params[:case])
         end
