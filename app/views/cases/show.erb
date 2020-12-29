@@ -11,8 +11,8 @@
 <p><%= @hunter.name %></p>
 <br>
 <br>
-<p>Click <a href="/cases/<%= @case.id %>/edit">here</a> to edit this case or click the delete button below to delete the case.</p>
+<a href="/cases/<%= @case.id %>/edit"><button type="button">Edit Case</button></a>
 <form method="POST" action="/cases/<%= @case.id %>">
     <input type="hidden" id="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
+    <input type="submit" value="Delete Case">
 </form>
