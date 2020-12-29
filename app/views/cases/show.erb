@@ -8,7 +8,7 @@
 <h3>Monster:</h3>
 <p><%= @monster.species.capitalize %></p>
 <h3>Hunter Assigned to This Case:</h3>
-<p><%= @hunter.name %></p>
+<p><%= @hunter.name %>, <%= @hunter.age %></p>
 <br>
 <br>
 <a href="/cases/<%= @case.id %>/edit"><button type="button">Edit Case</button></a>
