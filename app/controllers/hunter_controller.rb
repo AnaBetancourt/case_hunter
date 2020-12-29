@@ -12,6 +12,13 @@ class HunterController < ApplicationController
  
     get '/hunters/:id' do
         @hunter = Hunter.find_by(id: params[:id])
+        @cases = []
+
+        Case.all.each do |c|
+            if c.hunter_id == @hunter.id
+                @cases << c 
+            end
+        end
 
         erb :"/hunters/show"
     end
@@ -24,7 +31,7 @@ class HunterController < ApplicationController
  
     patch '/hunters/:id' do
         @hunter = Hunter.find_by(id: params[:id])
- 
+        
          
         redirect "/hunters/#{@hunter.id}"
     end

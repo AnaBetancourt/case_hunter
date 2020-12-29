@@ -1,0 +1,24 @@
+<h1>Hunter's Office</h1>
+<h2><%= @hunter.name %></h2>
+<h3>Your Information:</h3>
+<p>Age: <%= @hunter.age %></p>
+<p>Email: <%= @hunter.email %></p>
+<p>Username: <%= @hunter.username %></p>
+<ul><h3>Your Cases:</h3>
+<% @cases.each do |c| %>
+    <li>☠ <a href="/cases/<%= c.id %>"><%= c.name %></a></li>
+<% end %></ul>
+<br>
+<br>
+<a href="/cases/new"><button type="button">Create a New Case</button></a>
+<a href="/cases"><button type="button">View All Cases</button></a>
+<a href="/monsters/new"><button type="button">Create a New Monster</button></a>
+<a href="/monsters"><button type="button">View All Monsters</button></a>
+<br>
+<br>
+<a href="/hunters/<%= @hunter.id %>/edit"><button type="button">Edit Your Info</button></a>
+<br>
+<form method="POST" action="/hunters/<%= @hunter.id %>">
+    <input type="hidden" id="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete This Account">
+</form>
