@@ -1,8 +1,6 @@
-<body>
-    <h2>Case Files</h2>
-    <p>Please select a case to view more information regarding that specific case.</p>
-    <ul><% Case.all.each do |case_file| %>
-        <li>☠ <a href="/cases/<%= case_file.id %>"><%= case_file.name %></a></li>
-        <br>
-    <% end %></ul>
-</body>
+<h2>Case Files</h2>
+<p>Please select a case to view more information regarding that specific case.</p>
+<ul><% Case.all.each do |case_file| %>
+    <li>☠ <a href="/cases/<%= case_file.id %>"><%= case_file.name %></a></li>
+    <br>
+<% end %></ul>
