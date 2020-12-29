@@ -10,13 +10,10 @@
 <% end %></ul>
 <br>
 <br>
-<a href="/cases/new"><button type="button">Create a New Case</button></a>
-<a href="/cases"><button type="button">View All Cases</button></a>
-<a href="/monsters/new"><button type="button">Create a New Monster</button></a>
-<a href="/monsters"><button type="button">View All Monsters</button></a>
-<br>
-<br>
 <a href="/hunters/<%= @hunter.id %>/edit"><button type="button">Edit Your Info</button></a>
+<a href="/cases/new"><button type="button">Create a New Case</button></a>
+<a href="/monsters/new"><button type="button">Create a New Monster</button></a>
+<br>
 <br>
 <form method="POST" action="/hunters/<%= @hunter.id %>">
     <input type="hidden" id="hidden" name="_method" value="delete">
