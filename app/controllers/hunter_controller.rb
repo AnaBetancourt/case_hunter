@@ -4,7 +4,7 @@ class HunterController < ApplicationController
         erb :"/hunters/new"
     end
  
-    post '/hunters' do
+    post '/signup' do
         @hunter = Hunter.create(params)
 
         redirect "/hunters/#{@hunter.id}"
