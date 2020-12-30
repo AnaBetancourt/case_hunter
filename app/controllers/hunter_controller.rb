@@ -6,6 +6,7 @@ class HunterController < ApplicationController
  
     post '/signup' do
         @hunter = Hunter.create(params)
+        
 
         redirect "/hunters/#{@hunter.id}"
     end
