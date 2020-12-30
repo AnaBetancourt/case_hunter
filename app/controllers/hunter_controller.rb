@@ -1,6 +1,6 @@
 class HunterController < ApplicationController
  
-    get '/hunters/new' do
+    get '/signup' do
         erb :"/hunters/new"
     end
  
