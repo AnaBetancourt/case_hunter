@@ -56,7 +56,6 @@ class MonsterController < ApplicationController
             @errors = @monster.errors.full_messages.join(", ")
             erb :"/monsters/edit"
         end
-        
     end
 
     delete '/monsters/:id' do

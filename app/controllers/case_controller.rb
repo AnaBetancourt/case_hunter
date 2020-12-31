@@ -20,14 +20,14 @@ class CaseController < ApplicationController
     end
 
     post '/cases' do
-        @case = Case.create(params[:case])
+        case = Case.create(params[:case])
 
-        if !@case.monster_id 
-            @monster = Monster.create(params[:monster])
-            @monster.cases << @case
+        if !case.monster_id 
+            monster = Monster.create(params[:monster])
+            monster.cases << case
         end
 
-        redirect "/cases/#{@case.id}"
+        redirect "/cases/#{case.id}"
     end
 
     get '/cases/:id' do
@@ -57,21 +57,21 @@ class CaseController < ApplicationController
     end
 
     patch '/cases/:id' do
-        @case = Case.find_by(id: params[:id])
+        case = Case.find_by(id: params[:id])
 
         if params[:monster][:species] != ""
-            @monster = Monster.create(params[:monster])
-            @monster.cases << @case
+            monster = Monster.create(params[:monster])
+            monster.cases << case
         else
-            @case.update(params[:case])
+            case.update(params[:case])
         end
         
-        redirect "/cases/#{@case.id}"
+        redirect "/cases/#{case.id}"
     end
 
     delete '/cases/:id' do
-        @case = Case.find_by(id: params[:id])
-        @case.delete
+        case = Case.find_by(id: params[:id])
+        case.delete
 
         redirect "/cases"
     end
