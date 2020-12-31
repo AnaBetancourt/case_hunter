@@ -6,7 +6,7 @@ class HunterController < ApplicationController
  
     post '/signup' do
         @hunter = Hunter.create(params)
-        
+        session[:user-id] = @hunter.id
 
         redirect "/hunters/#{@hunter.id}"
     end
