@@ -28,8 +28,9 @@ class HunterController < ApplicationController
     end
  
     get '/hunters/:id' do
-        if logged_in?
-            @hunter = Hunter.find_by(id: params[:id])
+        @hunter = Hunter.find_by(id: params[:id])
+
+        if logged_in? && current_user.id == @hunter.id
             @cases = []
 
             Case.all.each do |c|
@@ -38,17 +39,17 @@ class HunterController < ApplicationController
                 end
             end
             erb :"/hunters/show"
-        else
+        elsif !logged_in?
             redirect "/"
+        else
+            redirect "/hunters/#{current_user.id}"
         end
     end
  
     get '/hunters/:id/edit' do
         @hunter = Hunter.find_by(id: params[:id])
 
-        if logged_in? && current_user.id == @hunter.id
-            erb :"/hunters/edit"
-        end
+        erb :"/hunters/edit"
     end
  
     patch '/hunters/:id' do
