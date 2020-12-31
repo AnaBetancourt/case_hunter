@@ -1,14 +1,22 @@
 class CaseController < ApplicationController
 
     get '/cases' do
-       erb :'/cases/index'
+        if logged_in?
+            erb :'/cases/index'
+        else
+            redirect '/'
+        end
     end
 
     get '/cases/new' do
-        @hunters = Hunter.all
-        @monsters = Monster.all
+        if logged_in?
+            @hunters = Hunter.all
+            @monsters = Monster.all
 
-        erb :"/cases/new"
+            erb :"/cases/new"
+        else
+            redirect "/"
+        end
     end
 
     post '/cases' do
@@ -23,18 +31,26 @@ class CaseController < ApplicationController
     end
 
     get '/cases/:id' do
-        @case = Case.find_by(id: params[:id])
-        @monster = Monster.find_by(id: @case.monster_id)
-        @hunter = Hunter.find_by(id: @case.hunter_id)
-        erb :"/cases/show"
+        if logged_in?
+            @case = Case.find_by(id: params[:id])
+            @monster = Monster.find_by(id: @case.monster_id)
+            @hunter = Hunter.find_by(id: @case.hunter_id)
+            erb :"/cases/show"
+        else
+            redirect "/"
+        end
     end
 
     get '/cases/:id/edit' do
-        @case = Case.find_by(id: params[:id])
-        @hunters = Hunter.all 
-        @monsters = Monster.all
+        if logged_in?
+            @case = Case.find_by(id: params[:id])
+            @hunters = Hunter.all 
+            @monsters = Monster.all
     
-        erb :"/cases/edit"
+            erb :"/cases/edit"
+        else
+            redirect "/"
+        end
     end
 
     patch '/cases/:id' do
