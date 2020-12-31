@@ -49,7 +49,13 @@ class HunterController < ApplicationController
     get '/hunters/:id/edit' do
         @hunter = Hunter.find_by(id: params[:id])
 
-        erb :"/hunters/edit"
+        if  logged_in? && current_user.id == @hunter.id
+            erb :"/hunters/edit"
+        elsif !logged_in?
+            redirect "/"
+        else
+            redirect "/hunters/#{current_user.id}"
+        end
     end
  
     patch '/hunters/:id' do
@@ -70,7 +76,7 @@ class HunterController < ApplicationController
         @hunter = Hunter.find_by(id: params[:id])
         @hunter.delete
         
-        redirect "/hunters"
+        redirect "/logout"
     end
  
 end
