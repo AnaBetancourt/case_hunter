@@ -5,10 +5,14 @@ class HunterController < ApplicationController
     end
  
     post '/signup' do
-        @hunter = Hunter.create(params)
-        session[:user-id] = @hunter.id
+        hunter = Hunter.new(params)
 
-        redirect "/hunters/#{@hunter.id}"
+        if hunter.save 
+            session[:user-id] = @hunter.id
+            redirect "/hunters/#{@hunter.id}"
+        else
+            redirect '/signup'
+        end
     end
  
     get '/hunters/:id' do
