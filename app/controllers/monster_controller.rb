@@ -25,12 +25,12 @@ class MonsterController < ApplicationController
             @errors = @monster.errors.full_messages.join(", ")
             erb :"monsters/new"
         end
-
         
     end
 
     get '/monsters/:id' do
         if logged_in?
+            @monster = Monster.find_by(id: params[:id])
             erb :"/monsters/show"
         else
             redirect "/"
