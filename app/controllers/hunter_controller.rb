@@ -8,10 +8,11 @@ class HunterController < ApplicationController
         hunter = Hunter.new(params)
 
         if hunter.save 
-            session[:user-id] = @hunter.id
-            redirect "/hunters/#{@hunter.id}"
+            session[:user_id] = hunter.id
+            redirect "/hunters/#{hunter.id}"
         else
-            redirect '/signup'
+            @errors = hunter.errors.full_messages.join(", ")
+            erb :"/hunters/new"
         end
     end
  

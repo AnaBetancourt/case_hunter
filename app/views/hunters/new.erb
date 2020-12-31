@@ -1,5 +1,10 @@
 <h2>Welcome to Case Hunter</h2>
 <p>Fill out the form below to create an account on the site.</p>
+<% if @errors %>
+    <h4>I'm sorry, you've encountered the following error(s):</h4><%= @errors %>
+<% end %>
+<br>
+<br>
 <form method="POST" action="/signup">
     <label for="name">Name:</label>
     <input type="text" name="name">
