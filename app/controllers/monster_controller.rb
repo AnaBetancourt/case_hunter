@@ -17,12 +17,12 @@ class MonsterController < ApplicationController
     end
 
     post '/monsters' do
-        @monster = Monster.new(params)
+        mmonster = Monster.new(params)
         
-        if @monster.save
-            redirect "/monsters/#{@monster.id}" 
+        if monster.save
+            redirect "/monsters/#{monster.id}" 
         else
-            @errors = @monster.errors.full_messages.join(", ")
+            @errors = monster.errors.full_messages.join(", ")
             erb :"monsters/new"
         end
         
@@ -48,19 +48,19 @@ class MonsterController < ApplicationController
     end
 
     patch '/monsters/:id' do
-        @monster = Monster.find_by(id: params[:id])
+        monster = Monster.find_by(id: params[:id])
 
-        if @monster.update(params[:monster])
-            redirect "/monsters/#{@monster.id}"
+        if monster.update(params[:monster])
+            redirect "/monsters/#{monster.id}"
         else
-            @errors = @monster.errors.full_messages.join(", ")
+            @errors = monster.errors.full_messages.join(", ")
             erb :"/monsters/edit"
         end
     end
 
     delete '/monsters/:id' do
-        @monster = Monster.find_by(id: params[:id])
-        @monster.delete
+        monster = Monster.find_by(id: params[:id])
+        monster.delete
 
         redirect "/monsters"
     end
