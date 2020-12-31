@@ -81,6 +81,12 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+
+  img {
+    margin-left: 800px;
+    width: 150px;
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 600px) {
