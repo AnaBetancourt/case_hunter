@@ -68,7 +68,8 @@ class HunterController < ApplicationController
  
     delete '/hunters/:id' do
         @hunter = Hunter.find_by(id: params[:id])
- 
+        @hunter.delete
+        
         redirect "/hunters"
     end
  
