@@ -60,6 +60,11 @@ class HunterController < ApplicationController
             redirect "/hunters/#{@hunter.id}"
         end
     end
+
+    get "/logout" do
+        session.clear
+        redirect "/"
+    end
  
     delete '/hunters/:id' do
         @hunter = Hunter.find_by(id: params[:id])
