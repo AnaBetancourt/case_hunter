@@ -15,6 +15,10 @@ class HunterController < ApplicationController
             erb :"/hunters/new"
         end
     end
+
+    post '/login' do
+        binding.pry
+    end
  
     get '/hunters/:id' do
         @hunter = Hunter.find_by(id: params[:id])
