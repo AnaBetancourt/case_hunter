@@ -2,15 +2,15 @@
 <p>Fill out the form below to edit the details of this monster. The current information is auto-filled.</p>
 <form method="POST" action="/monsters/<%= @monster.id %>">
     <input type="hidden" id="hidden" name="_method" value="patch">
-    <strong><label for="species">Species:</label></strong>
+    <label for="species">Species:</label>
     <input type="text" name="monster[species]" value="<%= @monster.species %>">
     <br>
-    <strong><label for="lore">Lore:</label></strong>
+    <label for="lore">Lore:</label>
     <textarea name="monster[lore]"><%= @monster.lore %></textarea>
     <br>
-    <strong><label for="how_to_kill">How to Kill:</label></strong>
+    <label for="how_to_kill">How to Kill:</label>
     <input type="text" name="monster[how_to_kill]" value="<%= @monster.how_to_kill %>">
     <br>
     <br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Edit">
 </form>

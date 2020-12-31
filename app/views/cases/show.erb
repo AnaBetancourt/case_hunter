@@ -6,7 +6,11 @@
 <h3>Description:</h3>
 <p><%= @case.description %></p>
 <h3>Monster:</h3>
-<p><%= @monster.species.capitalize %></p>
+<% if @monster %>
+    <p><%= @monster.species.capitalize %></p>
+<% else %>
+    <p>No monster assigned. Please edit this case and assign a monster.</P>
+<% end %>
 <h3>Hunter Assigned to This Case:</h3>
 <p><%= @hunter.name %>, <%= @hunter.age %></p>
 <% if current_user.id == @hunter.id %>
