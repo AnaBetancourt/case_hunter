@@ -38,15 +38,12 @@ class MonsterController < ApplicationController
     end
 
     get '/monsters/:id/edit' do
-        @monster = Monster.find_by(id: params[:id])
-
+        
         if logged_in?
-            
+            @monster = Monster.find_by(id: params[:id])
             erb :"/monsters/edit"
-        elsif !logged_in?
-            redirect "/"
         else
-            redirect "/monsters/#{@monster.id}"
+            redirect "/"
         end
     end
 
