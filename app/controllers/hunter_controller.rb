@@ -17,7 +17,14 @@ class HunterController < ApplicationController
     end
 
     post '/login' do
-        binding.pry
+        hunter = Hunter.find_by(username: params[:username])
+
+        if hunter && hunter.authenticate(params[:password])
+            sessions[:user_id] = hunter.id
+            redirect "/hunters/#{hunter.id}"
+        else
+            redirect "/"
+        end
     end
  
     get '/hunters/:id' do
