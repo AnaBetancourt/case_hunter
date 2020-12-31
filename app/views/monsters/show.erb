@@ -5,6 +5,12 @@
 <p><%= @monster.lore %></p>
 <h3>How to Kill:</h3>
 <p><%= @monster.how_to_kill %></p>
+<h3>Cases Involving this Monster:</h3>
+<% @monster.cases.each do |c| %>
+    ☠ <a href="/cases/<%= c.id %>"><%= c.name %></a>
+    <br>
+<% end %>
+<br>
 <br>
 <a href="/monsters/<%= @monster.id %>/edit"><button type="button">Edit Monster</button></a>
 <% if @monster.hunters.include?(current_user) %>
