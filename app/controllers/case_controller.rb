@@ -42,14 +42,17 @@ class CaseController < ApplicationController
     end
 
     get '/cases/:id/edit' do
-        if logged_in?
-            @case = Case.find_by(id: params[:id])
+        @case = Case.find_by(id: params[:id])
+
+        if logged_in? && @case.hunter.id == current_user.id
             @hunters = Hunter.all 
             @monsters = Monster.all
-    
+            
             erb :"/cases/edit"
-        else
+        elsif !logged_in?
             redirect "/"
+        else
+            redirect "/cases/#{@case.id}"
         end
     end
 
