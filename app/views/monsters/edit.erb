@@ -1,5 +1,11 @@
 <h2>Have new information? Let us know below!</h2>
 <p>Fill out the form below to edit the details of this monster. The current information is auto-filled.</p>
+<% if @errors %>
+    <h4>I'm sorry, you've encountered the following error(s):</h4>
+    <%= @errors %>
+    <br>
+    <br>
+<% end %>
 <form method="POST" action="/monsters/<%= @monster.id %>">
     <input type="hidden" id="hidden" name="_method" value="patch">
     <label for="species">Species:</label>

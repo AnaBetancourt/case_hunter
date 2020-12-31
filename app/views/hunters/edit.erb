@@ -1,6 +1,12 @@
 <h1>Hunter's Office</h1>
 <h2>Change your information below!</h2>
 <p>Fill out the form below to edit the details of your account. The account information is auto-filled.</p>
+<% if @errors %>
+    <h4>I'm sorry, you've encountered the following error(s):</h4>
+    <%= @errors %>
+    <br>
+    <br>
+<% end %>
 <form method="POST" action="/hunters/<%= @hunter.id %>">
     <input type="hidden" id="hidden" name="_method" value="patch">
     <h4><label for="name">Name:</label></h4>

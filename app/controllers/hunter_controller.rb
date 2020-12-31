@@ -61,9 +61,11 @@ class HunterController < ApplicationController
     patch '/hunters/:id' do
         @hunter = Hunter.find_by(id: params[:id])
         
-        if current_user.id == @hunter.id
-            @hunter.update(params[:hunter])
+        if current_user.id == @hunter.id && @hunter.update(params[:hunter])
             redirect "/hunters/#{@hunter.id}"
+        else
+            @errors = @hunter.errors.full_messages.join(", ")
+            erb :"/hunters/edit"
         end
     end
 

@@ -20,7 +20,7 @@ class MonsterController < ApplicationController
         @monster = Monster.new(params)
         
         if @monster.save
-            redirect "/monsters/#{@monster.id}"
+            redirect "/monsters/#{@monster.id}" 
         else
             @errors = @monster.errors.full_messages.join(", ")
             erb :"monsters/new"
@@ -50,9 +50,13 @@ class MonsterController < ApplicationController
     patch '/monsters/:id' do
         @monster = Monster.find_by(id: params[:id])
 
-        binding.pry
+        if @monster.update(params[:monster])
+            redirect "/monsters/#{@monster.id}"
+        else
+            @errors = @monster.errors.full_messages.join(", ")
+            erb :"/monsters/edit"
+        end
         
-        redirect "/monsters/#{@monster.id}"
     end
 
     delete '/monsters/:id' do
