@@ -1,0 +1,15 @@
+<h2>New Monster?</h2>
+<p>Fill out the form below to submit a new monster to the site.</p>
+<form method="POST" action="/monsters">
+    <strong><label for="species">Species:</label></strong>
+    <input type="text" name="species" required>
+    <br>
+    <strong><label for="lore">Lore:</label></strong>
+    <textarea name="lore" required></textarea>
+    <br>
+    <strong><label for="how_to_kill">How to Kill:</label></strong>
+    <input type="text" name="how_to_kill" required>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+</form>

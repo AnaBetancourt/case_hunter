@@ -17,6 +17,7 @@ class MonsterController < ApplicationController
     end
 
     post '/monsters' do
+        @monster = Monster.new(params)
         binding.pry
 
         redirect "/monsters/#{@monster.id}"
