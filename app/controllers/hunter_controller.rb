@@ -9,7 +9,7 @@ class HunterController < ApplicationController
 
         if hunter.save 
             session[:user_id] = hunter.id
-            redirect "/hunters/#{hunter.id}"
+            redirect "/hunters/#{current_user.id}"
         else
             @errors = hunter.errors.full_messages.join(", ")
             erb :"/hunters/new"
@@ -20,37 +20,44 @@ class HunterController < ApplicationController
         hunter = Hunter.find_by(username: params[:username])
 
         if hunter && hunter.authenticate(params[:password])
-            sessions[:user_id] = hunter.id
-            redirect "/hunters/#{hunter.id}"
+            session[:user_id] = hunter.id
+            redirect "/hunters/#{current_user.id}"
         else
             redirect "/"
         end
     end
  
     get '/hunters/:id' do
-        @hunter = Hunter.find_by(id: params[:id])
-        @cases = []
+        if logged_in?
+            @hunter = Hunter.find_by(id: params[:id])
+            @cases = []
 
-        Case.all.each do |c|
-            if c.hunter_id == @hunter.id
-                @cases << c 
+            Case.all.each do |c|
+                if c.hunter_id == @hunter.id
+                    @cases << c 
+                end
             end
+            erb :"/hunters/show"
+        else
+            redirect "/"
         end
-
-        erb :"/hunters/show"
     end
  
     get '/hunters/:id/edit' do
         @hunter = Hunter.find_by(id: params[:id])
-     
-        erb :"/hunters/edit"
+
+        if logged_in? && current_user.id == @hunter.id
+            erb :"/hunters/edit"
+        end
     end
  
     patch '/hunters/:id' do
         @hunter = Hunter.find_by(id: params[:id])
         
-         
-        redirect "/hunters/#{@hunter.id}"
+        if current_user.id == @hunter.id
+            @hunter.update(params[:hunter])
+            redirect "/hunters/#{@hunter.id}"
+        end
     end
  
     delete '/hunters/:id' do

@@ -1,26 +1,26 @@
 <h1>Hunter's Office</h1>
 <h2>Change your information below!</h2>
 <p>Fill out the form below to edit the details of your account. The account information is auto-filled.</p>
-<form method="POST" action="/cases/<%= @hunter.id %>">
+<form method="POST" action="/hunters/<%= @hunter.id %>">
     <input type="hidden" id="hidden" name="_method" value="patch">
     <h4><label for="name">Name:</label></h4>
-    <input type="text" name="name" value="<%= @hunter.name %>">
+    <input type="text" name="hunter[name]" value="<%= @hunter.name %>">
     <br>
     <br>
     <h4><label for="age">Age:</label></h4>
-    <input type="text" name="age" value="<%= @hunter.age %>">
+    <input type="text" name="hunter[age]" value="<%= @hunter.age %>">
     <br>
     <br>
     <h4><label for="email">Email:</label></h4>
-    <input type="text" name="email" value="<%= @hunter.email %>">
+    <input type="text" name="hunter[email]" value="<%= @hunter.email %>">
     <br>
     <br>
     <h4><label for="username">Username:</label></h4>
-    <input type="text" name="username" value="<%= @hunter.username %>">
+    <input type="text" name="hunter[username]" value="<%= @hunter.username %>">
     <br>
     <br>
     <h4><label for="password">Password:</label></h4>
-    <input type="password" name="password">
+    <input type="password" name="hunter[password]">
     <br>
     <br>
     <input type="submit" value="Edit">
