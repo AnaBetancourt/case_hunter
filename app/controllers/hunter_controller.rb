@@ -38,7 +38,9 @@ class HunterController < ApplicationController
                     @cases << c 
                 end
             end
+
             erb :"/hunters/show"
+
         elsif !logged_in?
             redirect "/"
         else
@@ -59,12 +61,12 @@ class HunterController < ApplicationController
     end
  
     patch '/hunters/:id' do
-        @hunter = Hunter.find_by(id: params[:id])
+        hunter = Hunter.find_by(id: params[:id])
         
-        if current_user.id == @hunter.id && @hunter.update(params[:hunter])
-            redirect "/hunters/#{@hunter.id}"
+        if current_user.id == hunter.id && hunter.update(params[:hunter])
+            redirect "/hunters/#{hunter.id}"
         else
-            @errors = @hunter.errors.full_messages.join(", ")
+            @errors = hunter.errors.full_messages.join(", ")
             erb :"/hunters/edit"
         end
     end
@@ -75,8 +77,8 @@ class HunterController < ApplicationController
     end
  
     delete '/hunters/:id' do
-        @hunter = Hunter.find_by(id: params[:id])
-        @hunter.delete
+        hunter = Hunter.find_by(id: params[:id])
+        hunter.delete
         
         redirect "/logout"
     end
