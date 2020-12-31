@@ -21,9 +21,11 @@
 
       <footer class="branding">
       <% if logged_in? %>
-        <a href="/hunters/<%= current_user.id %>">Home</a>
-        <a href="/cases">All Cases</a>
-        <a href="/monsters">All Monsters</a>
+        <a href="/hunters/<%= current_user.id %>">Home</a> |
+        <a href="/cases">All Cases</a> |
+        <a href="/cases/new">Create a New Case</a> |
+        <a href="/monsters">All Monsters</a> |
+        <a href="/monsters/new">Create a New Monster</a>
       <% end %>
         <small>&copy; 2020 <strong>CaseHunter</strong></small>
       </footer>
