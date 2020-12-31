@@ -20,8 +20,7 @@
 
       <footer class="branding">
       <% if logged_in? %>
-        <% binding.pry %>
-        <a href="/hunters/1">Home</a>
+        <a href="/hunters/<%= current_user.id %>">Home</a>
         <a href="/cases">Cases</a>
         <a href="/monsters">Monsters</a>
       <% end %>
