@@ -1,0 +1,6 @@
+<h2>Monster List</h2>
+<p>Please select a monster to view more information regarding that specific monster.</p>
+<ul><% Monster.all.each do |monster| %>
+    <li>☠ <a href="/monsters/<%= monster.id %>"><%= monster.species %></a></li>
+    <br>
+<% end %></ul>

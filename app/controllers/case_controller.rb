@@ -76,5 +76,4 @@ class CaseController < ApplicationController
         redirect "/cases"
     end
 
-
 end
