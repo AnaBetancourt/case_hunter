@@ -7,7 +7,7 @@
 <p><%= @case.description %></p>
 <h3>Monster:</h3>
 <% if @monster %>
-    <p><%= @monster.species.capitalize %></p>
+    <p><a href="/monsters/<%= @monster.id %>"><%= @monster.species.capitalize %></a></p>
 <% else %>
     <p>No monster assigned. Please edit this case and assign a monster.</P>
 <% end %>
