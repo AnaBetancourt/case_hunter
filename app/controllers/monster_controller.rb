@@ -18,9 +18,15 @@ class MonsterController < ApplicationController
 
     post '/monsters' do
         @monster = Monster.new(params)
-        binding.pry
+        
+        if @monster.save
+            redirect "/monsters/#{@monster.id}"
+        else
+            @errors = @monster.errors.full_messages.join(", ")
+            erb :"monsters/new"
+        end
 
-        redirect "/monsters/#{@monster.id}"
+        
     end
 
     get '/monsters/:id' do

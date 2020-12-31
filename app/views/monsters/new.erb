@@ -1,5 +1,11 @@
 <h2>New Monster?</h2>
 <p>Fill out the form below to submit a new monster to the site.</p>
+<% if @errors %>
+    <h4>I'm sorry, you've encountered the following error(s):</h4>
+    <%= @errors %>
+    <br>
+    <br>
+<% end %>
 <form method="POST" action="/monsters">
     <strong><label for="species">Species:</label></strong>
     <input type="text" name="species">
