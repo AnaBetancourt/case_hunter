@@ -1,16 +1,20 @@
 <h1>Hunter's Office</h1>
 <h2><%= @hunter.name %></h2>
-<h3>Your Information:</h3>
-<p>Age: <%= @hunter.age %></p>
-<p>Email: <%= @hunter.email %></p>
-<p>Username: <%= @hunter.username %></p>
+<h3>YOUR INFORMATION:</h3>
+<strong>Age:</strong> <%= @hunter.age %>
+<br>
+<strong>Email:</strong> <%= @hunter.email %>
+<br>
+<strong>Username:</strong> <%= @hunter.username %>
+<br>
+<br>
+<a href="/hunters/<%= @hunter.id %>/edit"><button type="button">Edit Information</button></a>
+<br>
+<br>
 <ul><h3>Your Cases:</h3>
 <% @cases.each do |c| %>
     <li>☠ <a href="/cases/<%= c.id %>"><%= c.name %></a></li>
 <% end %></ul>
-<br>
-<br>
-<a href="/hunters/<%= @hunter.id %>/edit"><button type="button">Edit Your Info</button></a>
 <br>
 <br>
 <form method="POST" action="/hunters/<%= @hunter.id %>">
