@@ -17,7 +17,7 @@ class MonsterController < ApplicationController
     end
 
     post '/monsters' do
-        mmonster = Monster.new(params)
+        monster = Monster.new(params)
         
         if monster.save
             redirect "/monsters/#{monster.id}" 
