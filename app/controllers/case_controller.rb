@@ -27,6 +27,8 @@ class CaseController < ApplicationController
             monster.cases << @case
         end
 
+        #needs to reload 'case/new' if there is an error creating a new monster along with the case
+
         redirect "/cases/#{@case.id}"
     end
 
