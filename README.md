@@ -1,6 +1,6 @@
 # Case Hunter
 
-Case Hunter is a web application for hunters(the user) to interact with their cases.
+Case Hunter is a web application for hunters(the user) to interact with their cases and the corresponding monsters.
 
 ## Installation
 
@@ -12,7 +12,7 @@ bundle install
 
 ## Usage
 
-This web application lets its users view, edit, and/or delete their cases and information regarding the monsters involved in the cases. It also for creation of new users, cases, or monsters.
+This web application allows its users to view, edit, and/or delete their cases and information regarding the monsters involved in the cases. It also allows for creation of new users, cases, or monsters.
 
 ## Contributing
 Pull requests and bug fixes welcome.
