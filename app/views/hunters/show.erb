@@ -12,9 +12,13 @@
 <br>
 <br>
 <ul><h3>YOUR CASES:</h3>
-<% @cases.each do |c| %>
-    <li>☠ <a href="/cases/<%= c.id %>"><%= c.name %></a></li>
-<% end %></ul>
+<% if @cases.length >= 1 %>
+    <% @cases.each do |c| %>
+        <li>☠ <a href="/cases/<%= c.id %>"><%= c.name %></a></li>
+    <% end %></ul>
+<% else %>
+    <p>You have no cases at this time.</p>
+<% end %>
 <br>
 <br>
 <form method="POST" action="/hunters/<%= @hunter.id %>">
