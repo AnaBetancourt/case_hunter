@@ -16,7 +16,7 @@ class MonsterController < ApplicationController
                     @cases << c 
                 end
             end
-            
+
             erb :"/monsters/new"
         else
             redirect "/"
@@ -24,9 +24,12 @@ class MonsterController < ApplicationController
     end
 
     post '/monsters' do
-        monster = Monster.new(params)
+        monster = Monster.new(params[:monster])
         
         if monster.save
+            if params[:case_file]
+                monster.cases << Case.find_by(id: params[:case_file][:id])
+            end
             redirect "/monsters/#{monster.id}" 
         else
             @errors = monster.errors.full_messages.join(", ")
