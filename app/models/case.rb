@@ -5,5 +5,4 @@ class Case < ActiveRecord::Base
     validates :name, uniqueness: true
     validates :location, presence: true
     validates :description, presence: true
-    validates :monster_id, presence: true
 end
