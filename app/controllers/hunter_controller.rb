@@ -23,7 +23,8 @@ class HunterController < ApplicationController
             session[:user_id] = hunter.id
             redirect "/hunters/#{current_user.id}"
         else
-            redirect "/"
+            @errors = "Invalid username and/or password."
+            erb :"welcome"
         end
     end
  
