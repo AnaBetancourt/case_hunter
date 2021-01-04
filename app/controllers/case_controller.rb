@@ -63,7 +63,7 @@ class CaseController < ApplicationController
             redirect "/cases/#{@case.id}"
         else
             @errors = @case.errors.full_messages.join(", ")
-            erb :"/monsters/edit"
+            erb :"/cases/edit"
         end
     end
 
