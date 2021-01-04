@@ -4,4 +4,5 @@ class Hunter < ActiveRecord::Base
     has_many :monsters, through: :cases
     validates :username, presence: true
     validates :username, uniqueness: true
+    validates :email, presence: true
 end
