@@ -59,14 +59,12 @@ class CaseController < ApplicationController
     patch '/cases/:id' do
         @case = Case.find_by(id: params[:id])
 
-        if params[:monster][:species] != ""
-            monster = Monster.create(params[:monster])
-            monster.cases << @case
+        if @case.update(params[:case])
+            redirect "/cases/#{@case.id}"
         else
-            @case.update(params[:case])
+            @errors = monster.errors.full_messages.join(", ")
+            erb :"/monsters/edit"
         end
-        
-        redirect "/cases/#{@case.id}"
     end
 
     delete '/cases/:id' do

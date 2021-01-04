@@ -1,4 +1,10 @@
 <h2>Have new information? Let us know below!</h2>
+<% if @errors %>
+    <h4>I'm sorry, you've encountered the following error(s):</h4>
+    <%= @errors %>
+    <br>
+    <br>
+<% end %>
 <p>Fill out the form below to edit the details of this case. The current case information is auto-filled.</p>
 <form method="POST" action="/cases/<%= @case.id %>">
     <input type="hidden" id="hidden" name="_method" value="patch">
@@ -20,22 +26,14 @@
         <br>
     <% end %>
     <br>
-    <p>Please select the monster involved in this case or create a new one below.</p>
+    <p>Please select the monster involved in this case.</p>
+    <h5>If no monster exists that suits this case, please navigate to the "Create New Monster" link at the bottom of the page. During new monster creation you will be able to assign the monster to this case.</h5>
+    <br>
     <p>Existing Monsters:</p>
     <% @monsters.each do |monster| %>
         <input type="radio" name="case[monster_id]" value="<%= monster.id %>"<%= 'checked' if @case.monster_id == monster.id %>> <%= monster.species.capitalize %></input>
         <br>
     <% end %>
-    <br>
-    <p>Create a New Monster:</p>
-    <label for="monster[species]">Species:</label>
-    <input type="text" name="monster[species]">
-    <br>
-    <label for="monster[lore]">Lore:</label>
-    <textarea name="monster[lore]"></textarea>
-    <br>
-    <label for="monster[how_to_kill]">How to Kill:</label>
-    <input type="text" name="monster[how_to_kill]">
     <br>
     <br>
     <input type="submit" value="Edit Case">

@@ -1,7 +1,9 @@
 <h2>Have a new case?</h2>
 <% if @errors %>
-    <p><b>I'm sorry, there were errors processing your request. The errors are displayed below:</b></p>
-    <p><%= @errors %></p>
+    <h4>I'm sorry, you've encountered the following error(s):</h4>
+    <%= @errors %>
+    <br>
+    <br>
 <% end %>
 <p>Fill out the form below to submit a new case to the site.</p>
 <form method="POST" action="/cases">
