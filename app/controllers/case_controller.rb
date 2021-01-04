@@ -62,7 +62,7 @@ class CaseController < ApplicationController
         if @case.update(params[:case])
             redirect "/cases/#{@case.id}"
         else
-            @errors = monster.errors.full_messages.join(", ")
+            @errors = @case.errors.full_messages.join(", ")
             erb :"/monsters/edit"
         end
     end
