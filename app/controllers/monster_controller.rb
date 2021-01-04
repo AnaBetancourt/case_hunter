@@ -10,6 +10,13 @@ class MonsterController < ApplicationController
 
     get '/monsters/new' do
         if logged_in?
+            @cases = []
+            Case.all.each do |c|
+                if c.monster_id == nil
+                    @cases << c 
+                end
+            end
+            
             erb :"/monsters/new"
         else
             redirect "/"

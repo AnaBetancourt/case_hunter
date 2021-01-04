@@ -15,6 +15,15 @@
     <br>
     <strong><label for="how_to_kill">How to Kill:</label></strong>
     <input type="text" name="how_to_kill">
+    <% if @cases.length > 0 %>
+        <br>
+        <br>
+        <p><strong>Assign this monster to a Case:</strong></p>
+        <% @cases.each do |case_file| %>
+            <input type="radio" name="case_file_id" value="<%= case_file.id %>"> <%= case_file.name %></input>
+            <br>
+        <% end %>
+    <% end %>
     <br>
     <br>
     <input type="submit" value="Submit">
