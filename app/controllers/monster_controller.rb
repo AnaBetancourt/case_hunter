@@ -35,7 +35,6 @@ class MonsterController < ApplicationController
             @errors = monster.errors.full_messages.join(", ")
             erb :"monsters/new"
         end
-        
     end
 
     get '/monsters/:id' do
@@ -64,7 +63,6 @@ class MonsterController < ApplicationController
             redirect "/monsters/#{monster.id}"
         else
             @errors = monster.errors.full_messages.join(", ")
-            
             erb :"/monsters/edit"
         end
     end

@@ -82,5 +82,5 @@ class HunterController < ApplicationController
         
         redirect "/logout"
     end
- 
+    
 end

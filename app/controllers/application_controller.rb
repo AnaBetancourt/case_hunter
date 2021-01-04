@@ -21,7 +21,6 @@ class ApplicationController < Sinatra::Base
     def current_user
       @current_user ||= Hunter.find_by(id: session[:user_id])
     end
-
   end
 
 end

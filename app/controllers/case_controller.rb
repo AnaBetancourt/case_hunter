@@ -35,6 +35,7 @@ class CaseController < ApplicationController
             @case = Case.find_by(id: params[:id])
             @monster = Monster.find_by(id: @case.monster_id)
             @hunter = Hunter.find_by(id: @case.hunter_id)
+
             erb :"/cases/show"
         else
             redirect "/"
