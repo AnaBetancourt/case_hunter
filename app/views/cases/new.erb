@@ -1,4 +1,8 @@
 <h2>Have a new case?</h2>
+<% if @errors %>
+    <p><b>I'm sorry, there were errors processing your request. The errors are displayed below:</b></p>
+    <p><%= @errors %></p>
+<% end %>
 <p>Fill out the form below to submit a new case to the site.</p>
 <form method="POST" action="/cases">
     <label for="case[name]">Case Name:</label>
@@ -17,22 +21,14 @@
         <br>
     <% end %>
     <br>
-    <p>Assign a monster to this case or create a new one below.</p>
+    Assign a monster to this case:
+    <h5>If no monster exists that suits this case, please submit the case without a monster then navigate to the "Create New Monster" link at the bottom of the page. During new monster creation you will be able to assign the monster to this case.</h5>
+    <br>
     <p>Existing Monsters:</p>
     <% @monsters.each do |monster| %>
         <input type="radio" name="case[monster_id]" value="<%= monster.id %>"> <%= monster.species.capitalize %></input>
         <br>
     <% end %>
-    <br>
-    <p>Create a New Monster:</p>
-    <label for="monster[species]">Species:</label>
-    <input type="text" name="monster[species]">
-    <br>
-    <label for="monster[lore]">Lore:</label>
-    <textarea name="monster[lore]"></textarea>
-    <br>
-    <label for="monster[how_to_kill]">How to Kill:</label>
-    <input type="text" name="monster[how_to_kill]">
     <br>
     <input type="submit" value="Submit Case">
 </form>

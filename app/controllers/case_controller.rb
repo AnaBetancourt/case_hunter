@@ -20,21 +20,14 @@ class CaseController < ApplicationController
     end
 
     post '/cases' do
-        @case = Case.create(params[:case])
+        @case = Case.new(params[:case])
 
-        if @case && !@case.monster_id 
-            monster = Monster.create(params[:monster])
-            if !Monster.create(params[:monster])
-                binding.pry
-            end
-            monster.cases << @case
-
+        if @case.save
             redirect "/cases/#{@case.id}"
+        else
+            @errors = @case.errors.full_messages.join(", ")
+            erb :"/cases/new"
         end
-
-        #needs to reload 'case/new' if there is an error creating a new monster along with the case
-
-        
     end
 
     get '/cases/:id' do
